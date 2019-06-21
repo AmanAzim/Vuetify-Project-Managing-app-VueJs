@@ -17,6 +17,9 @@
     <v-btn fab small dark color="purple">
       <v-icon>favorite</v-icon>
     </v-btn>
+    <hr>
+    <v-btn class="hidden-sm-and-down">Click 1</v-btn>
+    <v-btn class="hidden-sm-only">Click 2</v-btn>
   </div>
 </template>
 
