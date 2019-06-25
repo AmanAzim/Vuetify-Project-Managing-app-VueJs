@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-
-
+  <div class="dashboard">
     <h1 class="display-3">Home</h1>
     <v-btn class="pink white--text">Click</v-btn>
     <v-btn dark depressed color="pink">Click</v-btn>
