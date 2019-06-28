@@ -3,14 +3,27 @@
     <h1 class="subheading grey--text">Home</h1>
     <v-container class="my-5">
       <v-layout row class="mb-2">
-        <v-btn small flat color="grey" v-on:click="sortBy('title')">
-          <v-icon left small>folder</v-icon>
-          <span class="caption text-lowercase">by project name</span>
-        </v-btn>
-        <v-btn small flat color="grey" v-on:click="sortBy('person')">
-          <v-icon left small>person</v-icon>
-          <span class="caption text-lowercase">by person</span>
-        </v-btn>
+
+          <v-tooltip top>
+              <template #activator="data">
+                  <v-btn small flat color="grey" v-on="data.on" v-on:click="sortBy('title')">
+                      <v-icon left small>folder</v-icon>
+                      <span class="caption text-lowercase">by project name</span>
+                  </v-btn>
+              </template>
+              <span>Sort project by name</span>
+          </v-tooltip>
+
+          <v-tooltip top>
+              <template #activator="data">
+                  <v-btn small flat color="grey" v-on="data.on" v-on:click="sortBy('person')">
+                      <v-icon left small>person</v-icon>
+                      <span class="caption text-lowercase">by person</span>
+                  </v-btn>
+              </template>
+              <span>Sort project by person</span>
+          </v-tooltip>
+
       </v-layout>
       <v-card  v-for="project in projects" :key="project.title">
         <v-layout row wrap v-bind:class="`pa-3 project ${project.status}`">
