@@ -2,6 +2,16 @@
   <div class="dashboard">
     <h1 class="subheading grey--text">Home</h1>
     <v-container class="my-5">
+      <v-layout row class="mb-2">
+        <v-btn small flat color="grey" v-on:click="sortBy('title')">
+          <v-icon left small>folder</v-icon>
+          <span class="caption text-lowercase">by project name</span>
+        </v-btn>
+        <v-btn small flat color="grey" v-on:click="sortBy('person')">
+          <v-icon left small>person</v-icon>
+          <span class="caption text-lowercase">by person</span>
+        </v-btn>
+      </v-layout>
       <v-card  v-for="project in projects" :key="project.title">
         <v-layout row wrap v-bind:class="`pa-3 project ${project.status}`">
 
@@ -48,6 +58,11 @@
             { title: 'Create a community forum', person: 'Gouken', due: '20th Jan 2019', status: 'ongoing', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
             { title: 'Create a community forum', person: 'Gouken', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'}
           ],
+      }
+    },
+    methods:{
+      sortBy(props){
+          this.projects.sort((a,b)=>a[props]<b[props]? -1:1);
       }
     }
   }
