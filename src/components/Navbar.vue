@@ -4,7 +4,7 @@
            <v-toolbar-side-icon v-on:click="openDrawer=!openDrawer"></v-toolbar-side-icon>
            <v-toolbar-title>
                <span class="font-weight-light">Todo</span>
-               <span>Aman</span>
+               <span>Vuetify</span>
            </v-toolbar-title>
             <v-spacer></v-spacer>{{/*It is going to create space between these two elements*/}}
            <v-btn flat color="gray">
@@ -13,6 +13,14 @@
            </v-btn>
         </v-toolbar>
         <v-navigation-drawer app class="primary" v-model="openDrawer">
+           <v-layout column align-center>
+               <v-flex class="mt-5">
+                   <v-avatar size="100">
+                       <img src="/avatar-2.png">
+                   </v-avatar>
+                   <p class="white--text subheading mt-1 ml-4">Aman</p>
+               </v-flex>
+           </v-layout>
            <v-list>
                <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" >{{/*This is how we make "route-link" */}}
                    <v-list-tile-action>

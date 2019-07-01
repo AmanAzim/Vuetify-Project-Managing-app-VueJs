@@ -6,7 +6,11 @@
             <v-layout row wrap>
                 <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
                     <v-card flat class="text-xs-center ma-3">
-                        <v-responsive class="pt-4">Image</v-responsive>
+                        <v-responsive class="pt-4">
+                            <v-avatar size="100" class="gray lighten-2">
+                                <img :src="person.avatar">
+                            </v-avatar>
+                        </v-responsive>
                         <v-card-text>
                            <div class="subheading">{{ person.name }}</div>
                            <div class="grey--text">{{ person.role }}</div>
@@ -30,11 +34,11 @@
         data(){
             return {
                 team:[
-                    { name: 'Ryu', role: 'Graphic designer' },
-                    { name: 'Chun Li', role: 'Web developer' },
-                    { name: 'Gouken', role: 'Social media maverick' },
-                    { name: 'Bill Gates', role: 'Director' },
-                    { name: 'Yoshi', role: 'Sales guru'}
+                    { name: 'Roza', role: 'Graphic designer', avatar:'/avatar-1.png'},
+                    { name: 'Aman', role: 'Web developer', avatar:'/avatar-2.png'},
+                    { name: 'X-man', role: 'Social media maverick', avatar:'/avatar-3.png'},
+                    { name: 'Tansen', role: 'Director', avatar:'/avatar-4.png'},
+                    { name: 'Bill Gates', role: 'Sales guru', avatar:'/avatar-5.png'}
                 ]
             }
         }
