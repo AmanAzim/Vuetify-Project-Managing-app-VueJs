@@ -7,11 +7,27 @@
                <span>Vuetify</span>
            </v-toolbar-title>
             <v-spacer></v-spacer>{{/*It is going to create space between these two elements*/}}
+
+           <v-menu offset-y>{{/*offset-y will prevent the button to hide while clicking*/}}
+               <template v-slot:activator="{ on }">
+                   <v-btn flat color="primary" dark v-on="on">
+                       <v-icon left>expand_more</v-icon>
+                       <span>Menu</span>
+                   </v-btn>
+               </template>
+               <v-list>
+                   <v-list-tile v-for="link in links" :key="link.text" route :to="link.route">
+                       <v-list-tile-title>{{link.text}}</v-list-tile-title>
+                   </v-list-tile>
+               </v-list>
+           </v-menu>
+
            <v-btn flat color="gray">
                <span>Sign Out</span>
                <v-icon right>exit_to_app</v-icon>
            </v-btn>
         </v-toolbar>
+
         <v-navigation-drawer app class="primary" v-model="openDrawer">
            <v-layout column align-center>
                <v-flex class="mt-5">
