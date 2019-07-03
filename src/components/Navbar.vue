@@ -36,6 +36,9 @@
                    </v-avatar>
                    <p class="white--text subheading mt-1 ml-4">Aman</p>
                </v-flex>
+               <v-flex class="mt-4 mb-3">
+                   <Popup/>
+               </v-flex>
            </v-layout>
            <v-list>
                <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" >{{/*This is how we make "route-link" */}}
@@ -52,8 +55,12 @@
 </template>
 
 <script>
+    import Popup from './Popup';
     export default {
         name: "Navbar",
+        components:{
+            Popup,
+        },
         data(){
             return {
                 openDrawer:false,
