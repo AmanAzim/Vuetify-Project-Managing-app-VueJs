@@ -41,7 +41,7 @@
                </v-flex>
            </v-layout>
            <v-list>
-               <v-list-tile v-for="link in links" :key="link.text" router :to="link.route" >{{/*This is how we make "route-link" */}}
+               <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">{{/*This is how we make "route-link" */}}
                    <v-list-tile-action>
                       <v-icon class="white--text">{{link.icon}}</v-icon>
                    </v-list-tile-action>
@@ -56,6 +56,7 @@
 
 <script>
     import Popup from './Popup';
+    import {eventBus} from '../main'
     export default {
         name: "Navbar",
         components:{
@@ -70,6 +71,9 @@
                     { icon: 'person', text: 'Team', route: '/team' },
                 ]
             }
+        },
+        methods:{
+
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-   <v-dialog max-width="600px">
+   <v-dialog max-width="600px" v-model="modal">
        <template v-slot:activator="{ on }">
            <v-btn flat class="success" dark v-on="on">
                Add new project
@@ -25,7 +25,10 @@
                        </template>
                        <v-date-picker v-model="due" @input="menu2 = false"></v-date-picker>
                    </v-menu>
-                   <v-btn flat class="success mx-0 mt-3" v-on:click.prevent="submit">Add Project</v-btn>
+                   <v-btn flat class="success mx-0 mt-3"
+                          v-on:click.prevent="submit"
+                          :loading="loading"
+                          :disabled="loading">Add Project</v-btn>
                </v-form>
            </v-card-text>
        </v-card>
@@ -34,6 +37,7 @@
 
 <script>
     import format from 'date-fns/format'
+    import db from '../firebase/index'
     export default {
         name: "Popup",
         data(){
@@ -43,14 +47,30 @@
                 due:null,
                 inputRules:[
                     v=>v.length>=3 || 'Minimum length is 3 characters'
-                ]
+                ],
+                loading:false,
+                modal:false
             }
         },
         methods:{
             submit(){
                 if(this.$refs.form.validate()){
-                    console.log(this.title+' '+this.content);
+                    this.loading=true;
+                    const project={
+                        title:this.title,
+                        content:this.content,
+                        duedate:format(this.due, 'Do MMM YYYY'),
+                        person:'Aman',
+                        state:'ongoing'
+                    }
+
+                    db.collection('project-management-vuetify').add(project).then(res=>{
+                        console.log(res);
+                        this.loading=false;
+                        this.modal=false;
+                    })
                 }
+
             }
         },
         computed:{

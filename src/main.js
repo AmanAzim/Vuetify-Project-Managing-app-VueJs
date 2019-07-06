@@ -6,7 +6,9 @@ import VTooltip from 'v-tooltip'
 
 Vue.use(VTooltip);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+export const eventBus=new Vue();
 
 new Vue({
   router,
